@@ -4,11 +4,9 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import space.livedev.COVID19tracker.models.CoronaDataModel;
+import space.livedev.COVID19tracker.models.CovidDataConfirmedModel;
 
 import javax.annotation.PostConstruct;
-import java.io.FileReader;
-import java.io.Reader;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -18,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CovidDataService
+public class CovidDataConfirmedService
 {
-    private String COVID_CONFIRMED = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
+    private String COVID_CONFIRMED_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
 
-    private List<CoronaDataModel> allData = new ArrayList<>();
+    private List<CovidDataConfirmedModel> allData = new ArrayList<>();
 
     private int totalGlobalCases;
 
@@ -39,24 +37,24 @@ public class CovidDataService
         return totalUSCases;
     }
 
-    public List<CoronaDataModel> getAllData() {
+    public List<CovidDataConfirmedModel> getAllData() {
         return allData;
     }
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void getData() throws Exception
     {
-        List<CoronaDataModel> allDataTemp = new ArrayList<>();
+        List<CovidDataConfirmedModel> allDataTemp = new ArrayList<>();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(COVID_CONFIRMED)).build();
+                .uri(URI.create(COVID_CONFIRMED_URL)).build();
 
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
         StringReader stringReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(stringReader);
         for (CSVRecord record : records) {
-            CoronaDataModel dataModel = new CoronaDataModel();
+            CovidDataConfirmedModel dataModel = new CovidDataConfirmedModel();
 
             dataModel.setCountry(record.get("Country/Region"));
             dataModel.setProvince(record.get("Province/State"));
@@ -83,7 +81,7 @@ public class CovidDataService
     public int totalCanadaCasesFunc()
     {
         int cases = 0;
-        for (CoronaDataModel c : allData)
+        for (CovidDataConfirmedModel c : allData)
         {
             System.out.println(c.getCountry());
             if (c.getCountry().equals("Canada"))
@@ -97,7 +95,7 @@ public class CovidDataService
     public int totalUSCasesFunc()
     {
         int cases = 0;
-        for (CoronaDataModel c : allData)
+        for (CovidDataConfirmedModel c : allData)
         {
             System.out.println(c.getCountry());
             if (c.getCountry().equals("US"))

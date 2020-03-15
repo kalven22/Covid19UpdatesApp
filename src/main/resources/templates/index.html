@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>COVID-19 Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+<div class="py-3 my-1 sticky-top bg-danger text-white">
+    <h3 class="text-center">GLOBAL COVID-19 DATA</h3>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">GLOBALLY</div>
+                <div class="card-body text-danger">
+                    <h5 class="card-title">Total Cases</h5>
+                    <h6 th:text="${totalGlobalCases}" class="card-text"></h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">CANADA</div>
+                <div class="card-body text-danger">
+                    <h5 class="card-title">Total Cases</h5>
+                    <h6 th:text="${totalCanadaCases}" class="card-text"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">US</div>
+                <div class="card-body text-danger">
+                    <h5 class="card-title">Total Cases</h5>
+                    <h6 th:text="${totalUSCases}" class="card-text"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    Table div begins-->
+    <div>
+        <table class="table table-sm table-hr table-striped table-responsive-sm">
+            <tr>
+                <th class="">Country</th>
+                <th class="">Province</th>
+                <th class="">Total Cases</th>
+                <th class="">New Cases</th>
+            </tr>
+            <tr th:each="data : ${getAllData}">
+                <td th:text="${data.country}">dummy</td>
+                <td th:text="${data.province}">dummy</td>
+                <td th:text="${data.totalCases}">dummy</td>
+                <td th:text="${data.newCases}">dummy</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <p>
+        <a href="../home.html" th:href="@{/}">Return to home</a>
+    </p>
+    <br><br><br><br><br>
+    <hr>
+    <p class="text-center">by <a class="text-danger" target="_blank" href="https://github.com/kalven22">kalven22
+        (GitHub)</a></p>
+</div>
+</body>
+
+</html>

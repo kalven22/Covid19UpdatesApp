@@ -19,9 +19,11 @@
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
                 <div class="card-header">GLOBAL</div>
-                <div class="card-body text-danger">
-                    <h2 class="card-title">Total Cases</h2>
-                    <h4 th:text="${totalGlobalCases}" class="card-text"></h4>
+                <div class="card-body text-center">
+                    <h2 class="card-title text-danger">Total Infected</h2>
+                    <h4 th:text="${totalGlobalCases}" class="card-text text-danger"></h4>
+                    <h2 class="card-title text-success">Recovered</h2>
+                    <h4 th:text="${totalGlobalRecoveredCases}" class="card-text text-success"></h4>
                 </div>
             </div>
         </div>
@@ -29,18 +31,22 @@
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
                 <div class="card-header">CANADA</div>
-                <div class="card-body text-danger">
-                    <h2 class="card-title">Total Cases</h2>
-                    <h4 th:text="${totalCanadaCases}" class="card-text"></h4>
+                <div class="card-body text-center">
+                    <h2 class="card-title text-danger">Total Infected</h2>
+                    <h4 th:text="${totalCanadaCases}" class="card-text text-danger"></h4>
+                    <h2 class="card-title text-success">Recovered</h2>
+                    <h4 th:text="${totalCanadaRecoveredCases}" class="card-text text-success"></h4>
                 </div>
             </div>
         </div>
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
                 <div class="card-header">US</div>
-                <div class="card-body text-danger">
-                    <h2 class="card-title">Total Cases</h2>
-                    <h4 th:text="${totalUSCases}" class="card-text"></h4>
+                <div class="card-body text-center">
+                    <h2 class="card-title text-danger">Total Infected</h2>
+                    <h4 th:text="${totalUSCases}" class="card-text text-danger"></h4>
+                    <h2 class="card-title text-success">Recovered</h2>
+                    <h4 th:text="${totalUSRecoveredCases}" class="card-text text-success"></h4>
                 </div>
             </div>
         </div>

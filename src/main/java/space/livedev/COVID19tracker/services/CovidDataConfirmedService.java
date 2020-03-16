@@ -19,7 +19,6 @@ import java.util.List;
 public class CovidDataConfirmedService
 {
     private String COVID_CONFIRMED_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
-
     private List<CovidDataConfirmedModel> allData = new ArrayList<>();
 
     private int totalGlobalCases;
@@ -44,6 +43,7 @@ public class CovidDataConfirmedService
     @Scheduled(cron = "* * 1 * * *")
     public void getData() throws Exception
     {
+
         List<CovidDataConfirmedModel> allDataTemp = new ArrayList<>();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -108,6 +108,12 @@ public class CovidDataConfirmedService
 
     public int stringToInt(String in)
     {
-        return Integer.parseInt(in);
+        if (in.length() == 0){
+            return 0;
+        }
+        else{
+            return Integer.parseInt(in);
+        }
+
     }
 }

@@ -2,11 +2,6 @@ package space.livedev.COVID19tracker.models;
 
 public class CovidDataConfirmedModel
 {
-    private String country;
-    private String province;
-    private int totalCases;
-    private int newCases;
-
     public String getCountry() {
         return country;
     }
@@ -39,9 +34,14 @@ public class CovidDataConfirmedModel
         this.newCases = newCases;
     }
 
+    private String country;
+    private String province;
+    private int totalCases;
+    private int newCases;
+
     @Override
     public String toString() {
-        return "CoronaDataConfirmedModel{" +
+        return "CovidDataConfirmedModel{" +
                 "country='" + country + '\'' +
                 ", province='" + province + '\'' +
                 ", totalCases=" + totalCases +

@@ -75,7 +75,6 @@ public class CovidDataConfirmedService
 
         this.totalCanadaCases = totalCanadaCasesFunc();
         this.totalUSCases = totalUSCasesFunc();
-        System.out.println(totalCanadaCases);
     }
 
     public int totalCanadaCasesFunc()
@@ -83,7 +82,6 @@ public class CovidDataConfirmedService
         int cases = 0;
         for (CovidDataConfirmedModel c : allData)
         {
-            System.out.println(c.getCountry());
             if (c.getCountry().equals("Canada"))
             {
                 cases +=c.getTotalCases();
@@ -97,7 +95,6 @@ public class CovidDataConfirmedService
         int cases = 0;
         for (CovidDataConfirmedModel c : allData)
         {
-            System.out.println(c.getCountry());
             if (c.getCountry().equals("US"))
             {
                 cases +=c.getTotalCases();

@@ -9,8 +9,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
-<div class="py-3 my-1 sticky-top bg-danger text-white">
+<body class="">
+<div class="py-3 my-1 sticky-top bg-info text-white">
     <h3 class="text-center">GLOBAL COVID-19 DATA</h3>
 </div>
 <br>
@@ -18,35 +18,35 @@
     <div class="row">
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">GLOBAL</div>
+                <div class="card-header text-center h5">GLOBAL</div>
                 <div class="card-body text-center">
-                    <h2 class="card-title text-danger">Infected</h2>
+                    <h2 class="card-title text-danger">INFECTED</h2>
                     <h4 th:text="${totalGlobalCases}" class="card-text text-danger"></h4>
-                    <h2 class="card-title text-success">Recovered</h2>
-                    <h4 th:text="${totalGlobalRecoveredCases}" class="card-text text-success"></h4>
+                    <h2 class="card-title text-success">RECOVERED</h2>
+                    <h3 th:text="${totalGlobalRecoveredCases}" class="card-text text-success"></h3>
                 </div>
             </div>
         </div>
 
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">CANADA</div>
+                <div class="card-header text-center h5">CANADA</div>
                 <div class="card-body text-center">
-                    <h2 class="card-title text-danger">Infected</h2>
+                    <h2 class="card-title text-danger">INFECTED</h2>
                     <h4 th:text="${totalCanadaCases}" class="card-text text-danger"></h4>
-                    <h2 class="card-title text-success">Recovered</h2>
-                    <h4 th:text="${totalCanadaRecoveredCases}" class="card-text text-success"></h4>
+                    <h2 class="card-title text-success">RECOVERED</h2>
+                    <h3 th:text="${totalCanadaRecoveredCases}" class="card-text text-success"></h3>
                 </div>
             </div>
         </div>
         <div class="col-md">
             <div class="card border-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">US</div>
+                <div class="card-header text-center h5">U.S.A</div>
                 <div class="card-body text-center">
-                    <h2 class="card-title text-danger">Infected</h2>
+                    <h2 class="card-title text-danger">INFECTED</h2>
                     <h4 th:text="${totalUSCases}" class="card-text text-danger"></h4>
-                    <h2 class="card-title text-success">Recovered</h2>
-                    <h4 th:text="${totalUSRecoveredCases}" class="card-text text-success"></h4>
+                    <h2 class="card-title text-success">RECOVERED</h2>
+                    <h3 th:text="${totalUSRecoveredCases}" class="card-text text-success"></h3>
                 </div>
             </div>
         </div>

@@ -76,7 +76,6 @@ public class CovidDataRecoveredService
 
         this.totalCanadaRecoveredCases = totalCanadaCasesFunc();
         this.totalUSRecoveredCases = totalUSCasesFunc();
-        System.out.println(totalCanadaRecoveredCases);
     }
 
     public int totalCanadaCasesFunc()
@@ -84,7 +83,6 @@ public class CovidDataRecoveredService
         int cases = 0;
         for (CovidDataRecoveredModel c : allRecoveredData)
         {
-            System.out.println(c.getCountry());
             if (c.getCountry().equals("Canada"))
             {
                 cases +=c.getTotalRecovered();
@@ -98,7 +96,6 @@ public class CovidDataRecoveredService
         int cases = 0;
         for (CovidDataRecoveredModel c : allRecoveredData)
         {
-            System.out.println(c.getCountry());
             if (c.getCountry().equals("US"))
             {
                 cases +=c.getTotalRecovered();

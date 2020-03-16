@@ -36,6 +36,11 @@ public class CovidDataRecoveredService
         return totalUSRecoveredCases;
     }
 
+    private int totalIndiaRecoveredCases;
+    public int getTotalIndiaRecoveredCases() {
+        return totalIndiaRecoveredCases;
+    }
+
     public List<CovidDataRecoveredModel> getAllRecoveredData() {
         return allRecoveredData;
     }
@@ -76,6 +81,7 @@ public class CovidDataRecoveredService
 
         this.totalCanadaRecoveredCases = totalCanadaCasesFunc();
         this.totalUSRecoveredCases = totalUSCasesFunc();
+        this.totalIndiaRecoveredCases = totalIndiaCasesFunc();
     }
 
     public int totalCanadaCasesFunc()
@@ -97,6 +103,19 @@ public class CovidDataRecoveredService
         for (CovidDataRecoveredModel c : allRecoveredData)
         {
             if (c.getCountry().equals("US"))
+            {
+                cases +=c.getTotalRecovered();
+            }
+        }
+        return cases;
+    }
+
+    public int totalIndiaCasesFunc()
+    {
+        int cases = 0;
+        for (CovidDataRecoveredModel c : allRecoveredData)
+        {
+            if (c.getCountry().equals("India"))
             {
                 cases +=c.getTotalRecovered();
             }

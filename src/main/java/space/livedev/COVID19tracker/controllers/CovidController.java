@@ -29,6 +29,7 @@ public class CovidController
         model.addAttribute("totalGlobalRecoveredCases", covidDataRecoveredService.getTotalGlobalRecoveredCases());
         model.addAttribute("totalCanadaRecoveredCases", covidDataRecoveredService.getTotalCanadaRecoveredCases());
         model.addAttribute("totalUSRecoveredCases", covidDataRecoveredService.getTotalUSRecoveredCases());
+        model.addAttribute("totalIndiaRecoveredCases", covidDataRecoveredService.getTotalIndiaRecoveredCases());
 
         return "index";
     }

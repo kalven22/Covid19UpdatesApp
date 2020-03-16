@@ -36,6 +36,11 @@ public class CovidDataConfirmedService
         return totalUSCases;
     }
 
+    private int totalIndiaCases;
+    public int getTotalIndiaCases() {
+        return totalIndiaCases;
+    }
+
     public List<CovidDataConfirmedModel> getAllData() {
         return allData;
     }
@@ -75,6 +80,8 @@ public class CovidDataConfirmedService
 
         this.totalCanadaCases = totalCanadaCasesFunc();
         this.totalUSCases = totalUSCasesFunc();
+        this.totalIndiaCases = totalIndiaCasesFunc();
+
     }
 
     public int totalCanadaCasesFunc()
@@ -96,6 +103,19 @@ public class CovidDataConfirmedService
         for (CovidDataConfirmedModel c : allData)
         {
             if (c.getCountry().equals("US"))
+            {
+                cases +=c.getTotalCases();
+            }
+        }
+        return cases;
+    }
+
+    public int totalIndiaCasesFunc()
+    {
+        int cases = 0;
+        for (CovidDataConfirmedModel c : allData)
+        {
+            if (c.getCountry().equals("India"))
             {
                 cases +=c.getTotalCases();
             }

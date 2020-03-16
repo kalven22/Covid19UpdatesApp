@@ -10,7 +10,7 @@
 </head>
 
 <body class="">
-<div class="py-3 my-1 sticky-top bg-info text-white">
+<div class="py-3 my-1 sticky-top bg-primary text-white">
     <h3 class="text-center">GLOBAL COVID-19 DATA</h3>
 </div>
 <br>
@@ -47,6 +47,17 @@
                     <h4 th:text="${totalUSCases}" class="card-text text-danger"></h4>
                     <h2 class="card-title text-success">RECOVERED</h2>
                     <h3 th:text="${totalUSRecoveredCases}" class="card-text text-success"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header text-center h5">INDIA</div>
+                <div class="card-body text-center">
+                    <h2 class="card-title text-danger">INFECTED</h2>
+                    <h4 th:text="${totalIndiaCases}" class="card-text text-danger"></h4>
+                    <h2 class="card-title text-success">RECOVERED</h2>
+                    <h3 th:text="${totalIndiaRecoveredCases}" class="card-text text-success"></h3>
                 </div>
             </div>
         </div>

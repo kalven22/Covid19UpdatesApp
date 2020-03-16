@@ -23,6 +23,7 @@ public class CovidController
         model.addAttribute("totalGlobalCases", covidDataConfirmedService.getTotalGlobalCases());
         model.addAttribute("totalCanadaCases", covidDataConfirmedService.getTotalCanadaCases());
         model.addAttribute("totalUSCases", covidDataConfirmedService.getTotalUSCases());
+        model.addAttribute("totalIndiaCases", covidDataConfirmedService.getTotalIndiaCases());
 
         model.addAttribute("getAllRecoveredData", covidDataRecoveredService.getAllRecoveredData());
         model.addAttribute("totalGlobalRecoveredCases", covidDataRecoveredService.getTotalGlobalRecoveredCases());

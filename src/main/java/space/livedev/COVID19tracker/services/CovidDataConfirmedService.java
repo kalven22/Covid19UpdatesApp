@@ -70,7 +70,13 @@ public class CovidDataConfirmedService
             dataModel.setTotalCases(totalCases);
 
             int newCases = stringToInt(record.get(recordSize-1)) - stringToInt(record.get(recordSize-2));
-            dataModel.setNewCases(newCases);
+            if (newCases > 0){
+                dataModel.setNewCases(newCases);
+            }
+            else
+            {
+                dataModel.setNewCases(0);
+            }
 
             allDataTemp.add(dataModel);
         }

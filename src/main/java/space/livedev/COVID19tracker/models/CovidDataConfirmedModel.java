@@ -38,13 +38,13 @@ public class CovidDataConfirmedModel implements Comparable<CovidDataConfirmedMod
     public int compareTo(CovidDataConfirmedModel other) {
         if (this.getTotalCases() > other.getTotalCases())
         {
-            return 1;
+            return -1;
         }
         else if (this.getTotalCases() == other.getTotalCases())
         {
             return 0;
         }
-        else { return -1;}
+        else { return 1;}
     }
 
     private String country;

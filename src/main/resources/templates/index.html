@@ -16,7 +16,7 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
 
     <nav class="navbar navbar-dar bg-dark text-white sticky-top">
         <h3 class="text-center">GLOBAL COVID-19 DATA</h3>
@@ -24,55 +24,55 @@
     <br>
 
     <div class="row">
-        <div class="col-md">
-            <div class="card text-dark border-info mb-3" style="max-width: 18rem;background-color: #e3f2fd;">
+        <div class="col-sm-3">
+            <div class="card text-dark border-info mb-3" style="background-color: #e3f2fd;">
                 <div class="card-header h6">GLOBAL</div>
                 <div class="card-body text-center">
-                    <h3 class="card-title">INFECTED</h3>
-                    <h4 th:text="${totalGlobalCases}" class="card-text"></h4>
-                    <h3 class="card-title">RECOVERED</h3>
-                    <h4 th:text="${totalGlobalRecoveredCases}" class="card-text"></h4>
+                    <h4 class="card-title">INFECTED</h4>
+                    <h5 th:text="${totalGlobalCases}" class="card-text"></h5>
+                    <h4 class="card-title">RECOVERED</h4>
+                    <h5 th:text="${totalGlobalRecoveredCases}" class="card-text"></h5>
                 </div>
             </div>
         </div>
 
-        <div class="col-md">
-            <div class="card text-dark border-info mb-3" style="max-width: 18rem;background-color: #e3f2fd;">
+        <div class="col-sm-3">
+            <div class="card text-dark border-info mb-3" style="background-color: #e3f2fd;">
                 <div class="card-header h6">CANADA</div>
                 <div class="card-body text-center">
-                    <h3 class="card-title">INFECTED</h3>
-                    <h4 th:text="${totalCanadaCases}" class="card-text"></h4>
-                    <h3 class="card-title">RECOVERED</h3>
-                    <h4 th:text="${totalCanadaRecoveredCases}" class="card-text"></h4>
+                    <h4 class="card-title">INFECTED</h4>
+                    <h5 th:text="${totalCanadaCases}" class="card-text"></h5>
+                    <h4 class="card-title">RECOVERED</h4>
+                    <h5 th:text="${totalCanadaRecoveredCases}" class="card-text"></h5>
                 </div>
             </div>
         </div>
-        <div class="col-md">
-            <div class="card text-dark border-info mb-3" style="max-width: 18rem; background-color: #e3f2fd;">
+        <div class="col-sm-3">
+            <div class="card text-dark border-info mb-3" style="background-color: #e3f2fd;">
                 <div class="card-header h6">U.S.A</div>
                 <div class="card-body text-center">
-                    <h3 class="card-title">INFECTED</h3>
-                    <h4 th:text="${totalUSCases}" class="card-text"></h4>
-                    <h3 class="card-title">RECOVERED</h3>
-                    <h4 th:text="${totalUSRecoveredCases}" class="card-text"></h4>
+                    <h4 class="card-title">INFECTED</h4>
+                    <h5 th:text="${totalUSCases}" class="card-text"></h5>
+                    <h4 class="card-title">RECOVERED</h4>
+                    <h5 th:text="${totalUSRecoveredCases}" class="card-text"></h5>
                 </div>
             </div>
         </div>
-        <div class="col-md">
-            <div class="card text-dark border-info mb-3" style="max-width: 18rem;background-color: #e3f2fd;">
+        <div class="col-sm-3">
+            <div class="card text-dark border-info mb-3" style="background-color: #e3f2fd;">
                 <div class="card-header h6">INDIA</div>
                 <div class="card-body text-center">
                     <h4 class="card-title">INFECTED</h4>
-                    <h4 th:text="${totalIndiaCases}" class="card-text"></h4>
-                    <h3 class="card-title">RECOVERED</h3>
-                    <h4 th:text="${totalIndiaRecoveredCases}" class="card-text"></h4>
+                    <h5 th:text="${totalIndiaCases}" class="card-text"></h5>
+                    <h4 class="card-title">RECOVERED</h4>
+                    <h5 th:text="${totalIndiaRecoveredCases}" class="card-text"></h5>
                 </div>
             </div>
         </div>
     </div>
     <br/>
     <!--    Table div begins-->
-    <div class="container">
+    <div class="container-fluid">
         <div class="text-dark px-1 mx-1">
             <h5 class="text-left">More details....</h5>
         </div>

@@ -65,7 +65,7 @@
     <br/>
     <!--    Table div begins-->
     <div>
-        <table class="table table-sm table-hr table-striped table-responsive-sm">
+        <table class="table table-sm table-hr table-bordered table-responsive-sm">
             <tr>
                 <th class="">Country</th>
                 <th class="">Province</th>
@@ -73,15 +73,13 @@
                 <th class="">New Cases</th>
             </tr>
             <tr th:each="data : ${getAllData}">
-                <td th:text="${data.country}">dummy</td>
-                <td th:text="${data.province}">dummy</td>
-                <td th:text="${data.totalCases}">dummy</td>
-                <td th:text="${data.newCases}">dummy</td>
+                <td th:text="${data.country}"></td>
+                <td th:text="${data.province}"></td>
+                <td th:text="${data.totalCases}"></td>
+                <td th:text="${data.newCases}"></td>
             </tr>
 
         </table>
-
-
     </div>
     <p>
         <a href="../home.html" th:href="@{/}">Return to home</a>

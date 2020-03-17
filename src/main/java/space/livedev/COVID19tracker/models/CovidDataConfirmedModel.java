@@ -1,6 +1,6 @@
 package space.livedev.COVID19tracker.models;
 
-public class CovidDataConfirmedModel
+public class CovidDataConfirmedModel implements Comparable<CovidDataConfirmedModel>
 {
     public String getCountry() {
         return country;
@@ -32,6 +32,19 @@ public class CovidDataConfirmedModel
 
     public void setNewCases(int newCases) {
         this.newCases = newCases;
+    }
+
+    @Override
+    public int compareTo(CovidDataConfirmedModel other) {
+        if (this.getTotalCases() > other.getTotalCases())
+        {
+            return 1;
+        }
+        else if (this.getTotalCases() == other.getTotalCases())
+        {
+            return 0;
+        }
+        else { return -1;}
     }
 
     private String country;

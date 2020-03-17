@@ -13,6 +13,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -58,7 +60,8 @@ public class CovidDataConfirmedService
 
         StringReader stringReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(stringReader);
-        for (CSVRecord record : records) {
+        for (CSVRecord record : records)
+        {
             CovidDataConfirmedModel dataModel = new CovidDataConfirmedModel();
 
             dataModel.setCountry(record.get("Country/Region"));
@@ -81,6 +84,8 @@ public class CovidDataConfirmedService
             allDataTemp.add(dataModel);
         }
         this.allData=allDataTemp;
+
+        Collections.sort(allData);
 
         this.totalGlobalCases = allData.stream().mapToInt(i -> i.getTotalCases()).sum();
 

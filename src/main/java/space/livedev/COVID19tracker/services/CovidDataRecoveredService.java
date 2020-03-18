@@ -13,6 +13,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -76,6 +77,8 @@ public class CovidDataRecoveredService
             allDataTemp.add(recoveredModel);
         }
         this.allRecoveredData =allDataTemp;
+
+        Collections.sort(allRecoveredData);
 
         this.totalGlobalRecoveredCases = allRecoveredData.stream().mapToInt(i->i.getTotalRecovered()).sum();
 

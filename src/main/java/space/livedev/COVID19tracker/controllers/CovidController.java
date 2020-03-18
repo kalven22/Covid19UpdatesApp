@@ -16,6 +16,7 @@ public class CovidController
     @Autowired
     CovidDataRecoveredService covidDataRecoveredService;
 
+
     @GetMapping("/")
     public String display(Model model){
 
@@ -31,6 +32,14 @@ public class CovidController
         model.addAttribute("totalUSRecoveredCases", covidDataRecoveredService.getTotalUSRecoveredCases());
         model.addAttribute("totalIndiaRecoveredCases", covidDataRecoveredService.getTotalIndiaRecoveredCases());
 
+        model.addAttribute("allCanadaData", covidDataConfirmedService.getAllCanadaData());
+        model.addAttribute("allCanadaRecoveredData", covidDataRecoveredService.getAllCanadaRecoveredData());
+
+        model.addAttribute("allUSData", covidDataConfirmedService.getAllUSData());
+        model.addAttribute("allUSRecoveredData", covidDataRecoveredService.getAllUSRecoveredData());
+
+        model.addAttribute("allIndiaData", covidDataConfirmedService.getAllIndiaData());
+        model.addAttribute("allIndiaRecoveredData", covidDataRecoveredService.getAllIndiaRecoveredData());
         return "index";
     }
 }

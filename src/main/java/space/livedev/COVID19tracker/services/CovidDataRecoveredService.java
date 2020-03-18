@@ -4,6 +4,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import space.livedev.COVID19tracker.models.CovidDataConfirmedModel;
 import space.livedev.COVID19tracker.models.CovidDataRecoveredModel;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,24 @@ public class CovidDataRecoveredService
 {
     private String COVID_Recovered_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv";
     private List<CovidDataRecoveredModel> allRecoveredData = new ArrayList<>();
+    public List<CovidDataRecoveredModel> getAllRecoveredData() {
+        return allRecoveredData;
+    }
+
+    private List<CovidDataRecoveredModel> allCanadaRecoveredData = new ArrayList<>();
+    public List<CovidDataRecoveredModel> getAllCanadaRecoveredData() {
+        return allCanadaRecoveredData;
+    }
+
+    private List<CovidDataRecoveredModel> allUSRecoveredData = new ArrayList<>();
+    public List<CovidDataRecoveredModel> getAllUSRecoveredData() {
+        return allUSRecoveredData;
+    }
+
+    private List<CovidDataRecoveredModel> allIndiaRecoveredData = new ArrayList<>();
+    public List<CovidDataRecoveredModel> getAllIndiaRecoveredData() {
+        return allIndiaRecoveredData;
+    }
 
     private int totalGlobalRecoveredCases;
 
@@ -42,9 +61,7 @@ public class CovidDataRecoveredService
         return totalIndiaRecoveredCases;
     }
 
-    public List<CovidDataRecoveredModel> getAllRecoveredData() {
-        return allRecoveredData;
-    }
+
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void getData() throws Exception
@@ -82,17 +99,40 @@ public class CovidDataRecoveredService
 
         this.totalGlobalRecoveredCases = allRecoveredData.stream().mapToInt(i->i.getTotalRecovered()).sum();
 
-        this.totalCanadaRecoveredCases = totalCanadaCasesFunc();
-        this.totalUSRecoveredCases = totalUSCasesFunc();
-        this.totalIndiaRecoveredCases = totalIndiaCasesFunc();
+        this.totalCanadaRecoveredCases = totalCasesFunc("Canada");
+        this.totalUSRecoveredCases = totalCasesFunc("US");
+        this.totalIndiaRecoveredCases = totalCasesFunc("India");
+
+        this.allCanadaRecoveredData = allDataByCountry("Canada");
+        Collections.sort(allCanadaRecoveredData);
+
+        this.allUSRecoveredData = allDataByCountry("US");
+        Collections.sort(allUSRecoveredData);
+
+        this.allIndiaRecoveredData = allDataByCountry("India");
+        Collections.sort(allIndiaRecoveredData);
     }
 
-    public int totalCanadaCasesFunc()
+
+
+    public List<CovidDataRecoveredModel> allDataByCountry(String country){
+        List<CovidDataRecoveredModel> data = new ArrayList<>();
+        for (CovidDataRecoveredModel c : allRecoveredData)
+        {
+            if (c.getCountry().equals(country))
+            {
+                data.add(c);
+            }
+        }
+
+        return data;
+    }
+    public int totalCasesFunc(String country)
     {
         int cases = 0;
         for (CovidDataRecoveredModel c : allRecoveredData)
         {
-            if (c.getCountry().equals("Canada"))
+            if (c.getCountry().equals(country))
             {
                 cases +=c.getTotalRecovered();
             }
@@ -100,31 +140,6 @@ public class CovidDataRecoveredService
         return cases;
     }
 
-    public int totalUSCasesFunc()
-    {
-        int cases = 0;
-        for (CovidDataRecoveredModel c : allRecoveredData)
-        {
-            if (c.getCountry().equals("US"))
-            {
-                cases +=c.getTotalRecovered();
-            }
-        }
-        return cases;
-    }
-
-    public int totalIndiaCasesFunc()
-    {
-        int cases = 0;
-        for (CovidDataRecoveredModel c : allRecoveredData)
-        {
-            if (c.getCountry().equals("India"))
-            {
-                cases +=c.getTotalRecovered();
-            }
-        }
-        return cases;
-    }
 
     public int stringToInt(String in)
     {

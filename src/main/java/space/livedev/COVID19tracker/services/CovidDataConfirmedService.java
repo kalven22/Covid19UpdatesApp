@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import space.livedev.COVID19tracker.models.CovidDataConfirmedModel;
+import space.livedev.COVID19tracker.models.CovidDataRecoveredModel;
 
 import javax.annotation.PostConstruct;
 import java.io.StringReader;
@@ -22,6 +23,24 @@ public class CovidDataConfirmedService
 {
     private String COVID_CONFIRMED_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
     private List<CovidDataConfirmedModel> allData = new ArrayList<>();
+    public List<CovidDataConfirmedModel> getAllData() {
+        return allData;
+    }
+
+    private List<CovidDataConfirmedModel> allCanadaData = new ArrayList<>();
+    public List<CovidDataConfirmedModel> getAllCanadaData() {
+        return allCanadaData;
+    }
+
+    private List<CovidDataConfirmedModel> allUSData = new ArrayList<>();
+    public List<CovidDataConfirmedModel> getAllUSData() {
+        return allUSData;
+    }
+
+    private List<CovidDataConfirmedModel> allIndiaData = new ArrayList<>();
+    public List<CovidDataConfirmedModel> getAllIndiaData() {
+        return allIndiaData;
+    }
 
     private int totalGlobalCases;
 
@@ -43,9 +62,7 @@ public class CovidDataConfirmedService
         return totalIndiaCases;
     }
 
-    public List<CovidDataConfirmedModel> getAllData() {
-        return allData;
-    }
+
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void getData() throws Exception
@@ -89,44 +106,40 @@ public class CovidDataConfirmedService
 
         this.totalGlobalCases = allData.stream().mapToInt(i -> i.getTotalCases()).sum();
 
-        this.totalCanadaCases = totalCanadaCasesFunc();
-        this.totalUSCases = totalUSCasesFunc();
-        this.totalIndiaCases = totalIndiaCasesFunc();
+        this.totalCanadaCases = totalCasesFunc("Canada");
+        this.totalUSCases = totalCasesFunc("US");
+        this.totalIndiaCases = totalCasesFunc("India");
+
+        this.allCanadaData = allDataByCountry("Canada");
+        Collections.sort(allCanadaData);
+
+        this.allUSData = allDataByCountry("US");
+        Collections.sort(allUSData);
+
+        this.allIndiaData = allDataByCountry("India");
+        Collections.sort(allIndiaData);
 
     }
 
-    public int totalCanadaCasesFunc()
-    {
-        int cases = 0;
+    public List<CovidDataConfirmedModel> allDataByCountry(String country){
+        List<CovidDataConfirmedModel> data = new ArrayList<>();
         for (CovidDataConfirmedModel c : allData)
         {
-            if (c.getCountry().equals("Canada"))
+            if (c.getCountry().equals(country))
             {
-                cases +=c.getTotalCases();
+                data.add(c);
             }
         }
-        return cases;
+
+        return data;
     }
 
-    public int totalUSCasesFunc()
+    public int totalCasesFunc(String country)
     {
         int cases = 0;
         for (CovidDataConfirmedModel c : allData)
         {
-            if (c.getCountry().equals("US"))
-            {
-                cases +=c.getTotalCases();
-            }
-        }
-        return cases;
-    }
-
-    public int totalIndiaCasesFunc()
-    {
-        int cases = 0;
-        for (CovidDataConfirmedModel c : allData)
-        {
-            if (c.getCountry().equals("India"))
+            if (c.getCountry().equals(country))
             {
                 cases +=c.getTotalCases();
             }
